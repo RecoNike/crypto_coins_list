@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 final mainTheme = ThemeData(
-        primarySwatch: Colors.amber,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber),
+        primarySwatch: Colors.deepPurple,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           backgroundColor: Color.fromARGB(255, 29, 29, 29),
-          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20)
+          titleTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+          elevation: 0
         ),
         dividerColor: const Color.fromARGB(131, 255, 255, 255),
         textTheme: const TextTheme(
