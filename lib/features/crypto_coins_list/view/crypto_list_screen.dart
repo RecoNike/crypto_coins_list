@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../widgets/crypto_coin_tile.dart';
 
-
 class CryptoListScreen extends StatefulWidget {
   const CryptoListScreen({super.key, required this.title});
   final String title;
@@ -14,8 +13,7 @@ class CryptoListScreen extends StatefulWidget {
 }
 
 class _CryptoListScreenState extends State<CryptoListScreen> {
-
-  List<CryptoCoin> ?_cryptoCoinsList;
+  List<CryptoCoin>? _cryptoCoinsList;
 
   @override
   void initState() {
@@ -25,37 +23,28 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-
       backgroundColor: const Color.fromARGB(255, 29, 29, 29),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 29, 29, 29),
         title: Text(widget.title),
       ),
       body: (_cryptoCoinsList == null)
-       ? const Center(
-        child: CircularProgressIndicator(),
-       ) :
-       ListView.separated(
-        itemCount: _cryptoCoinsList!.length,
-        separatorBuilder: (context, index) => const Divider(),
-        itemBuilder: (context, index){
-        final coin = _cryptoCoinsList![index];
-        return CryptoCoinTile(coin: coin);
-        }
-        ),
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.separated(
+              itemCount: _cryptoCoinsList!.length,
+              separatorBuilder: (context, index) => const Divider(),
+              itemBuilder: (context, index) {
+                final coin = _cryptoCoinsList![index];
+                return CryptoCoinTile(coin: coin);
+              }),
     );
   }
 
-Future <void> _initCryptoList()
-  async {
-          
-            _cryptoCoinsList = await CryptoCoinsRepository().getCoinsList();
-            setState(() {
-              
-            });
+  Future<void> _initCryptoList() async {
+    _cryptoCoinsList = await CryptoCoinsRepository().getCoinsList();
+    setState(() {});
+  }
 }
-
-}
-
